@@ -1,0 +1,34 @@
+{
+  "pixel_simulator": [
+    {
+      "platform": "ANDROID",
+      "location": "local",
+      "device_name": "emulator-5554",
+      "platform_name": "Android",
+      "platform_version": "11.0",
+      "udid": "<!-Your-UDID-here>",
+      "avd": "Google_Pixel_3"
+    }
+  ],
+  "iphone_simulator": [
+    {
+      "platform": "IOS",
+      "location": "local",
+      "device_name": "iphone",
+      "platform_version": "14.5",
+      "udid": "<!-Your-UDID-here>"
+    }
+  ],
+  "chrome_web_local": [
+    {
+      "platform": "WEB",
+      "location": "local",
+      "browser": "chrome",
+      "chrome_options": [
+        "disable-infobars",
+        "--start-fullscreen"
+      ],
+      "headless": "false"
+    }
+  ]
+}

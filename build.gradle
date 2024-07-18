@@ -1,0 +1,64 @@
+buildscript {
+    ext {
+        serenity_version = '3.3.4'
+        serenity_cucumber_version = '3.3.4'
+        cucumber_version = '7.7.0'
+    }
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath"net.serenity-bdd:serenity-gradle-plugin:$serenity_version"
+
+    }
+}
+
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group = 'com.example'
+version = '1.0-SNAPSHOT'
+description = 'A multi-platform testing framework (mobile and web)'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
+}
+
+apply plugin: "net.serenity-bdd.serenity-gradle-plugin"
+apply plugin: 'java'
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'io.appium:java-client:9.2.3'
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.22.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.10.3'
+    testImplementation 'io.cucumber:cucumber-java:7.18.0'
+    testImplementation 'io.cucumber:cucumber-junit:7.18.0'
+    testImplementation 'io.cucumber:cucumber-junit-platform-engine:7.18.0'
+    implementation 'org.apache.logging.log4j:log4j-api:2.23.1'
+    implementation 'org.apache.logging.log4j:log4j-core:2.23.1'
+    implementation "net.serenity-bdd:serenity-core:$serenity_version"
+    implementation "net.serenity-bdd:serenity-junit:$serenity_version"
+    implementation "net.serenity-bdd:serenity-cucumber:$serenity_cucumber_version"
+    implementation 'org.apache.clerezza.ext:org.json.simple:0.4'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+tasks.test {
+    useJUnitPlatform()
+    systemProperty("cucumber.junit-platform.naming-strategy", "long")
+}
